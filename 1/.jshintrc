@@ -7,7 +7,9 @@
     "trailing":true,
     "curly":true,
     "strict":false,
-    "brawser":true,
+    "browser":true,
     "jquery":true,
     "esversion":6
 }
+
+
