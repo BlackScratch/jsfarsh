@@ -7,9 +7,9 @@ for (let i = 0; i < arrWeek.length; i ++){
         if (arrWeek[i] != 'Сб' && arrWeek[i] != 'Вс' && arrWeek[i] !== 'Пт' ){
         document.write('День недели ' + arrWeek[i] + '<br>');
     } if (arrWeek[i] === 'Пт'){
-        document.write('День недели <i>' + arrWeek[i] + '</i><br>')
+        document.write('День недели <i>' + arrWeek[i] + '</i><br>');
     } if (arrWeek[i] === 'Сб' || arrWeek[i] === 'Вс') {
-        document.write('День недели <b>' + arrWeek[i] + '</b><br>')
+        document.write('День недели <b>' + arrWeek[i] + '</b><br>');
     }
 }
 

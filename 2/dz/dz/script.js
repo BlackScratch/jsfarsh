@@ -20,7 +20,7 @@ let appData = {
 //         console.log("asdfsdaf");
 //         appData.expenses[a]=b;
 //     }else{
-//         continue;
+//         i--;
 //     }
 // };
 
@@ -35,7 +35,7 @@ let i=0;
 //         appData.expenses[a]=b;
         
 //     }else{
-        
+//       i--;
 //     }
 //     i ++;
 // }
@@ -50,7 +50,7 @@ do{
         appData.expenses[a]=b;
         
     }else{
-        
+      i--;  
     }
     i ++;
 } while (i<2);
