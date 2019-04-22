@@ -1,8 +1,7 @@
 let money = prompt ("Ваш бюджет на месяц", ''),
     time  = prompt('введите дату в формате YY-MM-DD', ''),
     i = 0;
-
-let appData = {
+    appData = {
     budget:money,
     expenses: {},
     optionalExpenses: {},
@@ -37,38 +36,21 @@ function detectLevel(){
 function chooseOptExpenses(){
     let numQu = 1;
     do{
-    let a = prompt("Введите необязательную статью расходов в этом месяце do", ''),
-        b = prompt("Во сколько обойдётся do?", '');
-
-        if((typeof(a))==='string' && (typeof(a))!=null && (typeof(b))!=null && a !='' && b != '' && a.length < 50){
-        console.log("asdfsdaf do");
-        appData.optionalExpenses[numQu]=b;
-        
+    let a = prompt("Статья необязательных расходов? ", '');
+        if((typeof(a))==='string'){
+        appData.optionalExpenses[numQu]=a;
     }else{
       i--;  
     }
     i ++;
     numQu ++;
 } while (i<3);
+
 console.log(appData);
 }
+
 chooseOptExpenses();
 
-
-
-// do{
-//     let a = prompt("Введите обязательную статью расходов в этом месяце do", ''),
-//         b = prompt("Во сколько обойдётся do?", '');
-
-//         if((typeof(a))==='string' && (typeof(a))!=null && (typeof(b))!=null && a !='' && b != '' && a.length < 50){
-//         console.log("asdfsdaf do");
-//         appData.expenses[a]=b;
-        
-//     }else{
-//       i--;  
-//     }
-//     i ++;
-// } while (i<2);
 
 
 
