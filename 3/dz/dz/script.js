@@ -35,16 +35,19 @@ function detectLevel(){
 // Записать ответы в объект optionalExpenses в формате Номер - Ответ.
 function chooseOptExpenses(){
     let numQu = 1;
-    do{
+
+    for(let i=0;i<3;i++){
+
     let a = prompt("Статья необязательных расходов? ", '');
         if((typeof(a))==='string'){
+        numQu ++;
+        console.log('Это цикл номер '+ i);
+        console.log('Это номер расхода '+ numQu);
         appData.optionalExpenses[numQu]=a;
     }else{
       i--;  
     }
-    i ++;
-    numQu ++;
-} while (i<3);
+};
 
 console.log(appData);
 }
