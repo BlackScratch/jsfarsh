@@ -1,3 +1,13 @@
+// Меняем порядок
+let liNow = document.getElementsByClassName('menu-item')[1];
+//Получаем родительский элемент для вставки
+let spBegore = document.getElementsByClassName('menu-item')[2];
+let parentDiv = liNow.parentNode;
+parentDiv.insertBefore(spBegore,liNow);
+
+
+console.log(parentDiv);
+
 let newLi = document.createElement('li');
 newLi.className='menu-item';
 newLi.innerHTML = 'Пятый пункт';

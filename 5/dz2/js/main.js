@@ -1,5 +1,8 @@
 let budget = document.getElementsByClassName('budget-value'),
 
+    //Получаем кнопку по id
+    getBudget = document.getElementById('start'),
+
     daybudget = document.getElementsByClassName('daybudget-value'),
 
     level = document.getElementsByClassName('level-value'),
@@ -17,54 +20,44 @@ let budget = document.getElementsByClassName('budget-value'),
     //Левый верхний блок
     inputText1 = document.getElementsByClassName('expenses-item')[0],
     
-
-    inputValue1 = document.getElementsByClassName('expenses-item')[1],
-    
-    inputText2 = document.getElementsByClassName('expenses-item')[2],
-    
-    inputValue2 = document.getElementsByClassName('expenses-item')[3],
-    
-
     //Получить поля для ввода необязательных расходов (optionalexpenses-item) при помощи querySelectorAll
-    optionalExpenses = document.querySelectorAll("optionalexpenses_1,optionalexpenses_2,optionalexpenses_3");
+    //optionalExpenses = document.querySelectorAll("optionalexpenses_1,optionalexpenses_2,optionalexpenses_3");
+    optionalExpenses = document.querySelectorAll(".optionalexpenses-item"),
 
-    btnYes = document.getElementsByTagName("button")[0];
+    btnYes = document.getElementsByTagName("button")[0],
 
-    btnEquals = document.getElementsByTagName("button")[2];
+    btnEquals = document.getElementsByTagName("button")[2],
 
     //Статья возможного расхода
-    optExensesDop = document.querySelector('#income');
+    optExensesDop = document.querySelector('#income'),
 
     //Чек бокс
-    saveCheckpoint = document.querySelector('#savings');
+    saveCheckpoint = document.querySelector('#savings'),
 
     //Поле сумма
-    saveSum = document.querySelector('#sum');
+    saveSum = document.querySelector('#sum'),
 
     //Поле процент
-    savePercent= document.querySelector('#percent');
+    savePercent= document.querySelector('#percent'),
 
     //Поле год
-    yearNow= document.querySelector('.year-value');
+    yearNow= document.querySelector('.year-value'),
 
     //Поле месяц
-    let monthNow= document.querySelector('.month-value');
+    monthNow= document.querySelector('.month-value'),
 
     //Поле день
     dayNow= document.querySelector('.day-value');
 
-//Получить кнопки “Утвердить” и “Рассчитать” через Tag, каждую в своей переменной
-btnYes.addEventListener('click', handleLinkClick);
-//Получить кнопки “Утвердить” и “Рассчитать” через Tag, каждую в своей переменной
-btnEquals.addEventListener('click', handleLinkClick);
+    //Получить кнопки “Утвердить” и “Рассчитать” через Tag, каждую в своей переменной
+    btnYes.addEventListener('click', handleLinkClick);
+    //Получить кнопки “Утвердить” и “Рассчитать” через Tag, каждую в своей переменной
+    btnEquals.addEventListener('click', handleLinkClick);
 
-
-
-
-function handleLinkClick(){
-    console.log('Наименование 1 '+inputText1.value);
-    console.log('Цена 1 '+inputValue1.value);
-    console.log('Наименование 2 '+inputText2.value);
-    console.log('Цена 2 '+inputValue2.value);
-    console.log('Допом '+optExensesDop.value);
-}
+    function handleLinkClick(){
+        console.log('Наименование 1 '+inputText1.value);
+        console.log('Цена 1 '+inputValue1.value);
+        console.log('Наименование 2 '+inputText2.value);
+        console.log('Цена 2 '+inputValue2.value);
+        console.log('Допом '+optExensesDop.value);
+    }

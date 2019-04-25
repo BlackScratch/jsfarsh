@@ -10,44 +10,48 @@ if (yy < 10) yy = '0' + yy;
 
 function formatDate(date) {
 
-    var dd = date.getDate();
+    let dd = date.getDate();
     if (dd < 10) dd = '0' + dd;
   
-    var mm = date.getMonth() + 1;
+    let mm = date.getMonth() + 1;
     if (mm < 10) mm = '0' + mm;
   
-    var yy = date.getFullYear();
+    let yy = date.getFullYear();
     if (yy < 10) yy = '0' + yy;
   
     return dd + '.' + mm + '.' + yy;
   }
   
   console.log( 'Привели дату к формату ' +formatDate(now) ); // '30.01.14'
-
+let nowmDate = formatDate(now);
 
 function getWeekDay(date) {
-    var days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+  let days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
   
     return days[date.getDay()];
   }
-  
+  document.write('Сегодня у нас '+nowmDate)
   var date = now; // 3 января 2014
-  console.log( 'Сегодня у нас '+getWeekDay(date) ); // 'пт'
+  console.log( 'Сегодня у нас '+nowmDate ); // 'пт'
 
   //Форма с выводом разницы дат
-  let firstIn = document.querySelector('#firstDate');
+  let firstIn = document.querySelector('#firstDate').value;
+  console.log(firstIn);
   
-  let secondDate = document.querySelector('#fsecondDate'),
+  let secondDate = document.querySelector('#secondDate').value,
     result = document.querySelector('#result'),
     button = document.querySelector('#check');
+    console.log(secondDate);
 
   button.addEventListener('click', seeResult);
 
+  let date1 = new Date(firstIn),
+      date2 = new Date(secondDate);
+      daysLag = Math.ceil(Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24));
+
+
   function seeResult(){
-   
-    var date1 = firstIn.value;
-    var date2 = secondDate.value;
-    var daysLag = Math.ceil(Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24));
-   result.value=daysLag;
-    firstIn.value='daysLag';
+    let daysLag = Math.ceil(Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24));
+    result.value=daysLag;
+    
   }
