@@ -1,9 +1,13 @@
 // Меняем порядок
-let liNow = document.getElementsByClassName('menu-item')[1];
-//Получаем родительский элемент для вставки
-let spBegore = document.getElementsByClassName('menu-item')[2];
-let parentDiv = liNow.parentNode;
-parentDiv.insertBefore(spBegore,liNow);
+// let liNow = document.getElementsByClassName('menu-item')[1];
+// //Получаем родительский элемент для вставки
+// let spBegore = document.getElementsByClassName('menu-item')[2];
+// let parentDiv = liNow.parentNode;
+// parentDiv.insertBefore(spBegore,liNow);
+
+let menu = document.querySelector('.menu'),
+  menuItem = document.querySelectorAll('.menu-item');
+  menu.insertBefore(menuItem[2],menuItem[1]);
 
 
 console.log(parentDiv);

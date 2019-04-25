@@ -21,15 +21,22 @@ function formatDate(date) {
   
     return dd + '.' + mm + '.' + yy;
   }
+
+
+let timeNow = (now.getHours()+':'+now.getMinutes()+':'+ now.getSeconds()+ '<br> ');
+document.write(timeNow);
   
   console.log( 'Привели дату к формату ' +formatDate(now) ); // '30.01.14'
 let nowmDate = formatDate(now);
 
-function getWeekDay(date) {
+function getWeekDay(now) {
   let days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
   
-    return days[date.getDay()];
+  return days[now.getDay()];
   }
+  document.write('День недели у нас сегодня '+ getWeekDay(now) + '<br> ');
+
+
   document.write('Сегодня у нас '+nowmDate)
   var date = now; // 3 января 2014
   console.log( 'Сегодня у нас '+nowmDate ); // 'пт'
