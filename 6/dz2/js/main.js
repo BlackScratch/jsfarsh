@@ -25,7 +25,7 @@ let budget = document.getElementsByClassName('budget-value')[0],
     //optionalExpenses = document.querySelectorAll("optionalexpenses_1,optionalexpenses_2,optionalexpenses_3");
     optionalExpenses = document.querySelectorAll(".optionalexpenses-item"),
     expensesItem = document.querySelectorAll(".expenses-item"),
-    expensesBtn = document.getElementsByTagName("button")[0],
+    
 
     btnEquals = document.getElementsByTagName("button")[2],
 
@@ -57,18 +57,60 @@ let budget = document.getElementsByClassName('budget-value')[0],
     dayNow= document.querySelector('.day-value');
 
     
+
+    
 let money = 0,
     time = 0;
     
     i = 0;
 
     countBtn.disabled = true;
-    expensesBtn.disabled = true;
+    
     optionalexpensesBtn.disabled = true;
     sumValue.disabled = true;
+    //expensesBtn.disabled = true;
     leftBlock.style.visibility= "hidden";
     getBudget.style.visibility= "visible";
     
+
+
+    let exm = document.querySelectorAll('.expenses-item'),
+    wbtn = document.querySelector('.expenses-item-btn');
+
+wbtn.style.opacity = 0.5;
+wbtn.disabled = true;
+
+for (let i = 0; i < exm.length; i++) {
+    exm[i].addEventListener('change', () => {
+        let ff = document.querySelector('#expenses_1'),
+            gg = document.querySelector('#expenses_2'),
+            hh = document.querySelector('#expenses_3'),
+            jj = document.querySelector('#expenses_4');
+        if (ff.value.length != 0 && gg.value.length != 0 && hh.value.length != 0 && jj.value.length != 0) {
+            wbtn.style.opacity = 1;
+            wbtn.disabled = false;
+        }
+    });
+}
+    
+let optExp = document.querySelectorAll('.optionalexpenses-item'),
+    wbtn1 = document.querySelector('.optionalexpenses-btn');
+
+    wbtn1.style.opacity = 0.5;
+    wbtn1.disabled = true;
+    for (let i = 0; i < optExp.length; i++) {
+        optExp[i].addEventListener('change', () => {
+            let ff = document.querySelector('#optionalexpenses_1'),
+                gg = document.querySelector('#optionalexpenses_2'),
+                hh = document.querySelector('#optionalexpenses_3');
+            if (ff.value.length != 0 && gg.value.length != 0 && hh.value.length != 0) {
+                wbtn1.style.opacity = 1;
+                wbtn1.disabled = false;
+            }
+        });
+    }
+
+
     getBudget.addEventListener('click', function(){
         money = prompt ("Ваш бюджет на месяц", ''),
         time  = prompt('введите дату в формате YYYY-MM-DD', '');
@@ -84,23 +126,13 @@ let money = 0,
         dayNow.value = new Date(Date.parse(time)).getDate();
     
         countBtn.disabled = false;
-        expensesBtn.disabled = false;
+        
         optionalexpensesBtn.disabled = false;
         sumValue.disabled = false;
         leftBlock.style.visibility= "visible";
     });
 
-    //проверка текста на русские буквы
-    // expensesItem[0].addEventListener('keypress', fn, false);
-    // $('#optionalexpenses_1').on('keypress', function() {
-    //     var that = this;
-    
-    //     setTimeout(function() {
-    //         var res = /[^а-я ]/g.exec(that.value);
-    //         console.log(res);
-    //         that.value = that.value.replace(res, '');
-    //     }, 0);
-    // });
+  
 
     
 
@@ -146,7 +178,7 @@ let money = 0,
         }
     });
     
-    expensesBtn.addEventListener('click', function(){
+    wbtn.addEventListener('click', function(){
         let sum = 0;
         let numQu = 1;
     
