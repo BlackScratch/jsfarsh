@@ -91,7 +91,41 @@ window.addEventListener('DOMContentLoaded', function(){
         setClock('timer', deadLine);
 
         let j;
-        let btnUp = document.querySelector('.backReturn');
+        let btnUp = document.querySelector('.backReturn'),
+            btnAboutUs =  document.querySelectorAll('nav > ul > li > a ')[0],
+            btnPhoto =  document.querySelectorAll('nav > ul > li > a ')[1],
+            btnPrice =  document.querySelectorAll('nav > ul > li > a ')[2],
+            btnContact =  document.querySelectorAll('nav > ul > li > a ')[3],
+            //блоки
+            blockAbout  = document.querySelector('.info'),
+            blockPhoto  = document.querySelector('.slider-title'),
+            blockprice  = document.querySelector('.counter'),
+            blockContact = document.querySelector('.contact');
+
+
+            function smoothScroll(){
+               event.preventDefault();
+               blockAbout.scrollIntoView({block: "center", behavior: "smooth"});
+             };
+             function smoothScroll1(){
+                event.preventDefault();
+                blockPhoto.scrollIntoView({block: "center", behavior: "smooth"});
+              };
+              function smoothScroll2(){
+                event.preventDefault();
+                blockprice.scrollIntoView({block: "center", behavior: "smooth"});
+              };
+              function smoothScroll3(){
+                event.preventDefault();
+                blockContact.scrollIntoView({block: "center", behavior: "smooth"});
+              };
+
+            btnAboutUs.addEventListener('click', smoothScroll);
+            btnPhoto.addEventListener('click', smoothScroll1);
+            btnPrice.addEventListener('click', smoothScroll2);
+            btnContact.addEventListener('click', smoothScroll3);
+
+
 
 
         function smoothUp(){
@@ -103,6 +137,11 @@ window.addEventListener('DOMContentLoaded', function(){
 
 
         btnUp.addEventListener('click', smoothUp);
+
+        //получаем координаты элементов
+        //координаты О нас
+        let aboutUs = document.querySelector('#about');
+        console.log(aboutUs.getBoundingClientRect().y);
     });
 
 
