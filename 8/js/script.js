@@ -107,6 +107,8 @@ window.addEventListener('DOMContentLoaded', function(){
                event.preventDefault();
                blockAbout.scrollIntoView({block: "center", behavior: "smooth"});
              };
+
+             
              function smoothScroll1(){
                 event.preventDefault();
                 blockPhoto.scrollIntoView({block: "center", behavior: "smooth"});
@@ -124,6 +126,14 @@ window.addEventListener('DOMContentLoaded', function(){
             btnPhoto.addEventListener('click', smoothScroll1);
             btnPrice.addEventListener('click', smoothScroll2);
             btnContact.addEventListener('click', smoothScroll3);
+
+            //ВОТ ЭТО ВОТ ПОТЕСТИТЬ
+            btnAboutUs.addEventListener('click', smoothScroll(blockAbout));
+
+            function smoothScroll(targetMove){
+                event.preventDefault();
+                targetMove.scrollIntoView({block: "center", behavior: "smooth"});
+              };
 
 
 
@@ -143,5 +153,25 @@ window.addEventListener('DOMContentLoaded', function(){
         let aboutUs = document.querySelector('#about');
         console.log(aboutUs.getBoundingClientRect().y);
     });
+
+
+let modal = document.querySelector('#myModal'),
+btn = document.querySelector('#myBtn'),
+span = document.querySelector('.close');
+
+btn.addEventListener('click', function(){
+    modal.style.display="block";
+});
+
+span.addEventListener('click', function(){
+    modal.style.display="none";
+});
+
+window.onclick = function(event){
+    if(event.target == modal){
+        modal.style.display="none";
+    }
+}
+
 
 
