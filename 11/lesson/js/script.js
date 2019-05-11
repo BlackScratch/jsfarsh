@@ -191,7 +191,8 @@ let message = {
 let form = document.querySelector('.main-form'),
     input = form.getElementsByTagName('input'),
     statusMessage = document.createElement('div'),
-    formSecond = document.querySelector('.contact-form');
+    formSecond = document.querySelector('#form');
+  
 
 
 statusMessage.classList.add('status');
@@ -273,8 +274,8 @@ formSecond.addEventListener('submit', function (e) {
 });
 
 //Проверка номера телефона
-let inp = document.getElementsByName('phone')[0],
-    input2 = document.querySelector("input[type=tel]");
+let inp = document.getElementsByName('phone')[0];
+    
 
 
 
@@ -293,41 +294,24 @@ inp.addEventListener('keypress', e => {
         e.preventDefault();
 });
 
-input2.addEventListener('focus', _ => {
+input2 = document.querySelector("input[type=tel]"),
+        input2.setAttribute('name', 'phone');
+        let inp3 = document.getElementsByName('phone')[0];
+
+        input2.addEventListener('focus', _ => {
     // Если там ничего нет или есть, но левое
-    if (!/^\+\d*$/.test(inp.value))
+    if (!/^\+\d*$/.test(input2.value))
+    console.log('asdfasdfdasf');
         // То вставляем знак плюса как значение
-        inp.value = '+';
+        input2.value = '+';
+    
 });
 
 
-input2.addEventListener('keypress', e => {
+inp3.addEventListener('keypress', e => {
     // Отменяем ввод не цифр
     if (!/\d/.test(e.key))
         e.preventDefault();
 });
 
 
-// let textToView = 'Изменяем текст';
-// class Option{
-//     constructor (height,width,bg,fontSize,textAlign, text){
-//         this.height = height;
-//         this.width = width;
-//         this.bg = bg;
-//         this.fontSize = fontSize;
-//         this.textAlign = textAlign;
-//         this.innerText = text;
-//     }
-//     createNewDiv(){
-//         var element = document.createElement('div');
-//         element.style.cssText=`background-color: ${this.bg}; 
-//         width: ${this.width}; 
-//         text-align: ${this.textAlign}; 
-//         height: ${this.height}; 
-//         font-size: ${this.fontSize}; 
-//         color: #fff`;
-//       element.innerHTML = this.innerText;
-//         console.log('created');   
-//         return document.body.appendChild(element);     
-//     } 
-// };
