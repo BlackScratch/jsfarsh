@@ -234,7 +234,9 @@ form.addEventListener('submit', function (e) {
     }
 });
 
-
+ input2 = document.querySelector("input[type=tel]");
+//         input2.setAttribute('name', 'phone');
+//         let inp3 = document.getElementsByName('phone')[0];
 
 formSecond.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -294,9 +296,7 @@ inp.addEventListener('keypress', e => {
         e.preventDefault();
 });
 
-input2 = document.querySelector("input[type=tel]"),
-        input2.setAttribute('name', 'phone');
-        let inp3 = document.getElementsByName('phone')[0];
+
 
         input2.addEventListener('focus', _ => {
     // Если там ничего нет или есть, но левое
@@ -308,7 +308,7 @@ input2 = document.querySelector("input[type=tel]"),
 });
 
 
-inp3.addEventListener('keypress', e => {
+input2.addEventListener('keypress', e => {
     // Отменяем ввод не цифр
     if (!/\d/.test(e.key))
         e.preventDefault();
