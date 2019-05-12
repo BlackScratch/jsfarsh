@@ -162,9 +162,10 @@ window.addEventListener('DOMContentLoaded', function () {
 let more = document.querySelector('.more'),
     overlay = document.querySelector('.overlay'),
     close = document.querySelector('.popup-close');
-more.classList.add('description-btn');
-moreButtons = document.querySelectorAll('.description-btn');
-close.addEventListener('click', hideModal);
+
+    more.classList.add('description-btn');
+    moreButtons = document.querySelectorAll('.description-btn');
+    close.addEventListener('click', hideModal);
 
 for (let i = 0; i < moreButtons.length; i++) {
     moreButtons[i].addEventListener('click', openModal);
@@ -192,7 +193,7 @@ let form = document.querySelector('.main-form'),
     input = form.getElementsByTagName('input'),
     statusMessage = document.createElement('div'),
     formSecond = document.querySelector('#form');
-  
+
 
 
 statusMessage.classList.add('status');
@@ -234,7 +235,7 @@ form.addEventListener('submit', function (e) {
     }
 });
 
- input2 = document.querySelector("input[type=tel]");
+input2 = document.querySelector("input[type=tel]");
 //         input2.setAttribute('name', 'phone');
 //         let inp3 = document.getElementsByName('phone')[0];
 
@@ -277,7 +278,7 @@ formSecond.addEventListener('submit', function (e) {
 
 //Проверка номера телефона
 let inp = document.getElementsByName('phone')[0];
-    
+
 
 
 
@@ -298,13 +299,13 @@ inp.addEventListener('keypress', e => {
 
 
 
-        input2.addEventListener('focus', _ => {
+input2.addEventListener('focus', _ => {
     // Если там ничего нет или есть, но левое
     if (!/^\+\d*$/.test(input2.value))
-    console.log('asdfasdfdasf');
-        // То вставляем знак плюса как значение
-        input2.value = '+';
-    
+        console.log('asdfasdfdasf');
+    // То вставляем знак плюса как значение
+    input2.value = '+';
+
 });
 
 
@@ -313,5 +314,3 @@ input2.addEventListener('keypress', e => {
     if (!/\d/.test(e.key))
         e.preventDefault();
 });
-
-

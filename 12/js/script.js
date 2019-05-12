@@ -162,9 +162,10 @@ window.addEventListener('DOMContentLoaded', function () {
 let more = document.querySelector('.more'),
     overlay = document.querySelector('.overlay'),
     close = document.querySelector('.popup-close');
-more.classList.add('description-btn');
-moreButtons = document.querySelectorAll('.description-btn');
-close.addEventListener('click', hideModal);
+
+    more.classList.add('description-btn');
+    moreButtons = document.querySelectorAll('.description-btn');
+    close.addEventListener('click', hideModal);
 
 for (let i = 0; i < moreButtons.length; i++) {
     moreButtons[i].addEventListener('click', openModal);
@@ -191,22 +192,81 @@ let message = {
 let form = document.querySelector('.main-form'),
     input = form.getElementsByTagName('input'),
     statusMessage = document.createElement('div'),
-    formSecond = document.querySelector('.contact-form');
+    formSecond = document.querySelector('#form');
+
 
 
 statusMessage.classList.add('status');
 
+let inp = document.getElementsByName('phone')[0];
+input2 = document.getElementsByName('phone')[1];
+//         input2.setAttribute('name', 'phone');
+//         let inp3 = document.getElementsByName('phone')[0];
+
+function sendForm(elem) {
+    elem.addEventListener('submit', function (e) {
+        e.preventDefault();
+        elem.appendChild(statusMessage);
+        let formData = new FormData(elem);
+
+        function postData(data) {
+
+            return new Promise(function (resolve, reject) {
+                let request = new XMLHttpRequest();
+
+                request.open('POST', 'server.php');
+
+                request.setRequestHeader('Content-Type',
+                    'application/x-www-form-urlencodedon; charset=utf-8');
+
+                request.onreadystatechange = function () {
+                    if (request.readyState < 4) {
+                        resolve();
+                    } else if (request.readyState === 4) {
+                        if (request.status == 200 && request.status < 3) {
+                            resolve();
+                        } else {
+                            reject();
+                        }
+                    }
+                };   
+
+                request.send(json);
+            });
+        }
+
+
+        function clearInput() {
+            for (let i = 0; i < input.length; i++) {
+                input[i].value = '';
+            }
+        }
+
+        postData(formData)
+            .then(() => statusMessage.innerHTML = message.loading)
+            .then(() => statusMessage.innerHTML = message.success)
+            .catch(() => statusMessage.innerHTML = message.failure)
+            .then(clearInput);
+    });
+}
+    sendForm(form);
+    sendForm(formSecond);
+
 //Проверка номера телефона
-let inp = document.getElementsByName('phone')[0],
-    input2 = document.querySelector("input[type=tel]");
+
+
+
+
 
 // Проверяем фокус
 inp.addEventListener('focus', _ => {
     // Если там ничего нет или есть, но левое
     if (!/^\+\d*$/.test(inp.value))
+    console.log('aaaaaaaaaaaa');
         // То вставляем знак плюса как значение
         inp.value = '+';
 });
+
 
 inp.addEventListener('keypress', e => {
     // Отменяем ввод не цифр
@@ -214,11 +274,15 @@ inp.addEventListener('keypress', e => {
         e.preventDefault();
 });
 
+
+
 input2.addEventListener('focus', _ => {
     // Если там ничего нет или есть, но левое
-    if (!/^\+\d*$/.test(inp.value))
-        // То вставляем знак плюса как значение
-        inp.value = '+';
+    if (!/^\+\d*$/.test(input2.value))
+        console.log('ffffffffffffff');
+    // То вставляем знак плюса как значение
+    input2.value = '+';
+
 });
 
 
@@ -227,79 +291,3 @@ input2.addEventListener('keypress', e => {
     if (!/\d/.test(e.key))
         e.preventDefault();
 });
-
-
-function sendForm(elem){
-    elem.addEventListener('submit', function(e){
-        e.preventDefault();
-        elem.appendChild(statusMessage);
-        let formData = new FormData(elem);
-
-        function postData(data) {
-
-            return new Promise(function(resolve, reject){
-            let request = new XMLHttpRequest();
-
-            request.open('POST', 'server.php');
-
-            request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-            request.onreadystatechange = function(){
-                if (request.readyState < 4) {
-                    resolve()
-                } else if (request.readyState === 4) {
-                    if(request.status == 200 && request.status<3){
-                    resolve()
-                    }
-                }  else {
-                    reject()
-                }
-            }        
-        }
-    
-        request.send(data);
-    }
-    }
-};
-
-function clearInput(){
-    for (let i = 0; i < input.length; i++) {
-        input[i].value = '';
-    }
-}
-
-postData(formData)
-    .then(()=>statusMessage.innerHTML = message.loading)
-    .then(()=>{
-        thanksModal.style.display = 'block';
-        mainModal.style.display = 'none';
-        statusMessage.style.display = '';
-
-    });
-
-postData(form);
-postData(formSecond);
-
-// let textToView = 'Изменяем текст';
-// class Option{
-//     constructor (height,width,bg,fontSize,textAlign, text){
-//         this.height = height;
-//         this.width = width;
-//         this.bg = bg;
-//         this.fontSize = fontSize;
-//         this.textAlign = textAlign;
-//         this.innerText = text;
-//     }
-//     createNewDiv(){
-//         var element = document.createElement('div');
-//         element.style.cssText=`background-color: ${this.bg}; 
-//         width: ${this.width}; 
-//         text-align: ${this.textAlign}; 
-//         height: ${this.height}; 
-//         font-size: ${this.fontSize}; 
-//         color: #fff`;
-//       element.innerHTML = this.innerText;
-//         console.log('created');   
-//         return document.body.appendChild(element);     
-//     } 
-// };
