@@ -230,6 +230,12 @@ function sendForm(elem) {
                         }
                     }
                 };   
+                let obj = {};
+                formData.forEach(function (value, key) {
+                    obj[key] = value;
+                });
+            
+                let json = JSON.stringify(obj);
 
                 request.send(json);
             });
